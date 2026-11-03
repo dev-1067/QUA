@@ -1,0 +1,9 @@
+backend/data/
+backend/static/
+web/node_modules/
+__pycache__/
+*.pyc
+.env
+backend/server.log
+.pytest_cache/
+*.log
