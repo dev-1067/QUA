@@ -162,3 +162,8 @@ def test_login_lockout(client):
         client.post("/api/v1/auth/login", json={"email": "l1.east@recoveriq.in", "password": "wrong"})
     r = client.post("/api/v1/auth/login", json={"email": "l1.east@recoveriq.in", "password": "Demo@1234"})
     assert r.status_code == 423
+
+
+def test_no_contact_delivered_outside_window(client, admin):
+    r = client.get("/api/v1/compliance/report", params={"days": 30}, headers=admin).json()
+    assert r["total_attempts"] > 0 and r["delivered_outside_window"] == 0

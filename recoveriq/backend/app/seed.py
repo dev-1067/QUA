@@ -153,7 +153,7 @@ def _pick(rnd: random.Random, pairs):
 def _local_dt(day_offset: int, hour: float, rnd: random.Random) -> datetime:
     """Naive UTC datetime for `day_offset` days ago at local `hour` (IST)."""
     base = clock.local_now().replace(hour=0, minute=0, second=0, microsecond=0) - timedelta(days=day_offset)
-    t = base + timedelta(hours=hour, minutes=rnd.randint(0, 59), seconds=rnd.randint(0, 59))
+    t = base + timedelta(hours=hour, seconds=rnd.randint(0, 59))  # `hour` already carries the minutes
     return (t - t.utcoffset()).replace(tzinfo=None)
 
 
@@ -407,6 +407,7 @@ def seed(db) -> None:
             c._seed_pay = (max(amount, 500.0), _local_dt(rnd.randint(0, 20), rnd.uniform(9, 21), rnd), False)
         if hasattr(c, "_seed_pay"):
             amount, ts, from_ptp = c._seed_pay
+            ts = min(ts, now - timedelta(minutes=rnd.randint(10, 240)))  # history never lies in the future
             amount = round(min(amount, c.outstanding), 2)
             link = PaymentLink(case_id=c.id, gateway="sandbox", gateway_link_id=f"plink_seed{pay_rows:05d}",
                                token=secrets.token_urlsafe(16), amount=amount, amount_paid=amount,

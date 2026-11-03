@@ -430,7 +430,7 @@ sec("Engineering"); curSec = "Engineering";
     txt(s, h, { x: M, y, w: 1.7, h: 0.35, fontSize: 14, bold: true, color: HEX.teal });
     txt(s, d, { x: M + 1.8, y, w: 5.3, h: 0.75, fontSize: 13 });
   });
-  const stats = [["21", "unit & API tests passing"], ["34", "browser steps passing, 0 console errors"], ["5 roles × 31", "endpoints smoke-tested, 0 server errors"], ["740", "synthetic accounts across 14 branches"]];
+  const stats = [["27", "unit, API & integration tests passing"], ["34", "browser steps passing, 0 console errors"], ["5 roles × 31", "endpoints smoke-tested, 0 server errors"], ["740", "synthetic accounts across 14 branches"]];
   stats.forEach(([k2, v], i) => {
     const col = i % 2, row = Math.floor(i / 2);
     const x = 8.05 + col * 2.4, y = 1.6 + row * 2.45;

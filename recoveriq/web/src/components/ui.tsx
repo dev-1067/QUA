@@ -22,7 +22,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
     <ToastCtx.Provider value={push}>
       {children}
       {createPortal(
-        <div className="fixed top-4 left-1/2 -translate-x-1/2 z-[2000] flex flex-col gap-2 w-[min(420px,calc(100vw-32px))] pointer-events-none">
+        <div className="fixed bottom-5 left-1/2 -translate-x-1/2 z-[2000] flex flex-col-reverse gap-2 w-[min(420px,calc(100vw-32px))] pointer-events-none">
           {items.map((t) => {
             const I = icon[t.kind];
             return (

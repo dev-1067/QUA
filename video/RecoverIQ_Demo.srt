@@ -1,0 +1,299 @@
+1
+00:00:00,200 --> 00:00:11,168
+Every morning, a field agent at an Indian lender starts the day with a spreadsheet of three hundred overdue loans, and no idea which twenty really matter.
+
+2
+00:00:11,218 --> 00:00:19,329
+Visits go unverified, promises get lost in notebooks, and payments are sometimes marked as paid before the money ever arrives.
+
+3
+00:00:19,379 --> 00:00:25,042
+This is RecoverIQ, our solution for QUASAR five point oh, problem statement one, fintech.
+
+4
+00:00:25,092 --> 00:00:25,858
+One case.
+
+5
+00:00:25,908 --> 00:00:26,674
+One trail.
+
+6
+00:00:26,724 --> 00:00:27,490
+Full visibility.
+
+7
+00:00:28,740 --> 00:00:33,171
+We sign in as the administrator, so we can see every screen.
+
+8
+00:00:33,221 --> 00:00:42,880
+The dashboard shows the overdue book, the money collected, the collection rate, the cost to recover every hundred rupees, the digital self-cure rate, and promises kept.
+
+9
+00:00:42,930 --> 00:00:48,482
+Every rupee counted here was confirmed by the payment gateway, never typed in by hand.
+
+10
+00:00:48,532 --> 00:00:55,950
+Below, we see daily collections, the mix of field, tele-calling and digital cases, and how old the overdue book is.
+
+11
+00:00:56,810 --> 00:01:02,686
+New overdue accounts arrive from the lender's core banking system as a CSV or Excel file.
+
+12
+00:01:02,736 --> 00:01:04,167
+Let's upload a sample.
+
+13
+00:01:04,217 --> 00:01:09,352
+Six accounts are created, and one bad row is rejected with a clear reason.
+
+14
+00:01:09,402 --> 00:01:12,314
+Now we upload the exact same file again.
+
+15
+00:01:12,364 --> 00:01:13,426
+Zero new cases.
+
+16
+00:01:13,476 --> 00:01:18,240
+One loan account always means exactly one case, so nothing is ever duplicated.
+
+17
+00:01:19,180 --> 00:01:21,963
+The case queue ranks every account by priority.
+
+18
+00:01:22,013 --> 00:01:23,734
+Let's open the top case.
+
+19
+00:01:23,784 --> 00:01:26,213
+The risk score comes with its reasons.
+
+20
+00:01:26,263 --> 00:01:30,109
+Every point is explained, like days past due, and missed instalments.
+
+21
+00:01:30,159 --> 00:01:38,608
+Next to it, a machine learning model estimates the chance that this borrower pays on their own within thirty days, with its top drivers.
+
+22
+00:01:38,658 --> 00:01:45,691
+On the right, a manager can send a nudge, create a payment link, reassign the agent, or override the channel.
+
+23
+00:01:45,741 --> 00:01:48,170
+Every one of these actions is recorded.
+
+24
+00:01:49,110 --> 00:01:51,343
+Routing is driven by versioned rules.
+
+25
+00:01:51,393 --> 00:01:55,527
+Let's lower the field visit threshold from seventy to fifty five.
+
+26
+00:01:55,577 --> 00:01:58,951
+When we publish, the whole book is re-scored instantly.
+
+27
+00:01:59,001 --> 00:02:06,560
+Affected cases move to field visits and are assigned to agents, and every case remembers which rule version decided it.
+
+28
+00:02:07,510 --> 00:02:14,728
+Allocation matches cases to agents by pincode, distance, each agent's recovery record in that bucket, and spare capacity.
+
+29
+00:02:14,778 --> 00:02:19,170
+One click on rebalance evens out the workload across the team.
+
+30
+00:02:20,040 --> 00:02:21,808
+Now, the field agent's phone.
+
+31
+00:02:21,858 --> 00:02:26,535
+Rahul sees today's worklist, ranked, with the reason each case is on top.
+
+32
+00:02:26,585 --> 00:02:30,898
+Field areas often have no signal, so let's switch the network off.
+
+33
+00:02:30,948 --> 00:02:32,353
+The app keeps working.
+
+34
+00:02:32,403 --> 00:02:37,807
+Rahul checks in at the borrower's address, and the GPS position and time are captured.
+
+35
+00:02:37,857 --> 00:02:39,988
+He adds a note in Marathi.
+
+36
+00:02:40,038 --> 00:02:45,079
+The borrower lost his job, but will pay the instalment once his salary comes.
+
+37
+00:02:45,129 --> 00:02:47,624
+Both actions wait safely on the phone.
+
+38
+00:02:47,674 --> 00:02:51,260
+When the network comes back, they sync automatically, exactly once.
+
+39
+00:02:52,210 --> 00:02:56,548
+Back at the branch, the check-in appears on the live field map.
+
+40
+00:02:56,598 --> 00:03:00,204
+Visits within three hundred metres of the address are verified.
+
+41
+00:03:00,254 --> 00:03:06,420
+Visits that are too far away, have poor GPS accuracy, or show impossible travel speed are flagged.
+
+42
+00:03:07,310 --> 00:03:08,907
+Now the most important rule.
+
+43
+00:03:08,957 --> 00:03:12,858
+A case is marked paid only when the payment gateway confirms it.
+
+44
+00:03:12,908 --> 00:03:16,810
+To collect, the agent shows a UPI QR code to the borrower.
+
+45
+00:03:17,740 --> 00:03:24,119
+The borrower scans it and sees a secure page in their own language, with the agent's verified identity.
+
+46
+00:03:24,169 --> 00:03:28,047
+They pay through the gateway checkout, which runs in test mode.
+
+47
+00:03:28,097 --> 00:03:35,190
+The gateway sends a digitally signed webhook to RecoverIQ, and only then is the payment accepted, with an instant receipt.
+
+48
+00:03:36,120 --> 00:03:43,674
+On the manager's screen, the case is now paid and confirmed, and the receipt is attached to the same case record.
+
+49
+00:03:43,724 --> 00:03:46,209
+What if the same webhook arrives twice?
+
+50
+00:03:46,259 --> 00:03:47,295
+We replay it.
+
+51
+00:03:47,345 --> 00:03:49,105
+The result is, duplicate ignored.
+
+52
+00:03:49,155 --> 00:03:50,916
+Money is never posted twice.
+
+53
+00:03:50,966 --> 00:03:54,537
+And a forged webhook with the wrong signature is rejected.
+
+54
+00:03:54,587 --> 00:04:00,330
+If a webhook is ever lost, a reconciliation job asks the gateway and posts what's missing.
+
+55
+00:04:01,250 --> 00:04:06,442
+Recovery agents may only contact borrowers between eight in the morning and seven in the evening.
+
+56
+00:04:06,492 --> 00:04:11,684
+Let's move the demo clock to eight thirty at night, and try to send an SMS.
+
+57
+00:04:11,734 --> 00:04:15,288
+It's blocked, and the attempt is still logged with the reason.
+
+58
+00:04:15,338 --> 00:04:19,220
+The compliance report proves that nothing was ever delivered outside the window.
+
+59
+00:04:20,130 --> 00:04:27,219
+Every action goes into a tamper-evident audit trail, where each row carries the hash of the one before it.
+
+60
+00:04:27,269 --> 00:04:31,727
+Now let's simulate an insider editing a payment directly in the database.
+
+61
+00:04:31,777 --> 00:04:35,484
+Verification immediately points to the exact row that was changed.
+
+62
+00:04:35,534 --> 00:04:38,490
+Restore it, and the chain is intact again.
+
+63
+00:04:39,400 --> 00:04:41,309
+Promises to pay are tracked automatically.
+
+64
+00:04:41,359 --> 00:04:43,594
+Let's jump the clock three days ahead.
+
+65
+00:04:43,644 --> 00:04:46,207
+Promises that weren't kept break on their own.
+
+66
+00:04:46,257 --> 00:04:52,410
+The first break sends the case for a field visit, and the second escalates it to the branch manager.
+
+67
+00:04:53,330 --> 00:05:03,504
+Notes in Hindi, Marathi and English become a sentiment map of India, so managers can see where hardship is building, state by state and city by city.
+
+68
+00:05:03,554 --> 00:05:09,942
+The leaderboard ranks agents only on gateway-confirmed money and GPS-verified visits, with the proof behind every point.
+
+69
+00:05:09,992 --> 00:05:19,030
+And the learning loop retrains the model on real outcomes, compares it in shadow mode, and goes live only after a manager approves it.
+
+70
+00:05:19,930 --> 00:05:26,462
+RecoverIQ covers all eighteen essential requirements, backed by automated tests and a full browser test.
+
+71
+00:05:26,512 --> 00:05:34,800
+It runs with a single command, works offline in the field, and keeps every rupee and every contact provable.
+
+72
+00:05:34,850 --> 00:05:35,677
+One case.
+
+73
+00:05:35,727 --> 00:05:36,555
+One trail.
+
+74
+00:05:36,605 --> 00:05:37,432
+Full visibility.
+
+75
+00:05:37,482 --> 00:05:38,310
+Thank you.

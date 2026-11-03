@@ -269,8 +269,9 @@ async def forge_webhook(user: User = Depends(require("admin", "l1", "l2", "exec"
     """Sends a fabricated 'paid' webhook with a wrong signature to prove it is rejected."""
     def pick():
         with write_session() as db:
+            # prefer an open link; any link works, since the signature check runs before anything else
             link = db.execute(select(PaymentLink).where(PaymentLink.status.in_(("created", "initiated")))
-                              .order_by(PaymentLink.created_at.desc())).scalar()
+                              .order_by(PaymentLink.created_at.desc())).scalar()                 or db.execute(select(PaymentLink).order_by(PaymentLink.created_at.desc())).scalar()
             if not link:
                 raise HTTPException(404, "Create a payment link first")
             audit.record(db, db.get(User, user.id), "webhook.forgery_test", "payment_link", link.id, {})

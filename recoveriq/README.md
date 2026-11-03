@@ -134,7 +134,7 @@ Secrets that are not supplied (JWT secret, PII key, webhook secret) are generate
 ## Tests
 
 ```bash
-cd backend && python -m pytest -q                      # 26 tests: domain, API, and Twilio/SMTP/Razorpay against mocked APIs
+cd backend && python -m pytest -q                      # 27 tests: domain, API, and Twilio/SMTP/Razorpay against mocked APIs
 python backend/tests/smoke_live.py http://localhost:8000   # every endpoint as all 5 roles, fails on any 5xx
 python backend/tests/e2e_ui.py http://localhost:8000       # Playwright walk-through, 34 steps, saves docs/screenshots
 ```
